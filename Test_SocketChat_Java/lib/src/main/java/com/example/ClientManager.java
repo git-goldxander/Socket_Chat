@@ -60,7 +60,7 @@ public class ClientManager {
                                     String text = new String(buffer,0,len);
                                     System.out.println("收到的数据为：" + text);
                                     // 在这里群发消息
-                                    sendMsgAll(text);
+                                    //sendMsgAll(text);
                                 }
 
                             }catch (Exception e){

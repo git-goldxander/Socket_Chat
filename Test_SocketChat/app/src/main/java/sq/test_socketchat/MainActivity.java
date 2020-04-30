@@ -17,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.Thread.sleep;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rv;
@@ -72,9 +74,18 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             OutputStream outputStream = socket.getOutputStream();
                             SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");    //设置日期格式
-                            outputStream.write((socket.getLocalPort() + "//" + data + "//" + df.format(new Date())).getBytes("utf-8"));
-                            outputStream.flush();
 
+                            int count = 50;
+                            while(count > 0) {
+                                outputStream.write((socket.getLocalPort() + "//" + data + "//" + df.format(new Date())).getBytes("utf-8"));
+                                outputStream.flush();
+                                count = count - 1;
+                                try {
+                                    sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
