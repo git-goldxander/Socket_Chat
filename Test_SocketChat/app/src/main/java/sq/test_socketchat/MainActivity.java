@@ -64,6 +64,103 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
 
+        try {
+            sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+/*
+        try {
+        final String databoot = "boot";
+        SimpleDateFormat dfboot = new SimpleDateFormat("HH:mm:ss");
+        OutputStream outputStreamboot = socket.getOutputStream();
+        outputStreamboot.write((socket.getLocalPort() + "//" + databoot + "//" + dfboot.format(new Date())).getBytes("utf-8"));
+        outputStreamboot.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
+
+/////
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OutputStream outputStream = socket.getOutputStream();
+                    SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");    //设置日期格式
+
+                    int count = 1;
+                    final String data = "boot";
+                    while(count > 0) {
+                        outputStream.write((socket.getLocalPort() + "//" + data + "//" + df.format(new Date())).getBytes("utf-8"));
+                        outputStream.flush();
+                        count = count - 1;
+                        try {
+                            sleep(30000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        /////
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OutputStream outputStream = socket.getOutputStream();
+                    SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");    //设置日期格式
+
+                    int count = 50;
+                    final String data = "heart";
+                    while(count > 0) {
+                        outputStream.write((socket.getLocalPort() + "//" + data + "//" + df.format(new Date())).getBytes("utf-8"));
+                        outputStream.flush();
+                        //count = count - 1;
+                        try {
+                            sleep(30000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+        ////
+        /////
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OutputStream outputStream = socket.getOutputStream();
+                    SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");    //设置日期格式
+
+                    int count = 50;
+                    final String data = "LOC";
+                    while(count > 0) {
+                        outputStream.write((socket.getLocalPort() + "//" + data + "//" + df.format(new Date())).getBytes("utf-8"));
+                        outputStream.flush();
+                        //count = count - 1;
+                        try {
+                            sleep(10000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
