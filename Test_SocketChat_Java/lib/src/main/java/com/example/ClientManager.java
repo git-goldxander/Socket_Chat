@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,8 +58,19 @@ public class ClientManager {
                                 byte[] buffer = new byte[1024];
                                 int len;
                                 while ((len = inputStream.read(buffer)) != -1){
-                                    String text = new String(buffer,0,len);
-                                    System.out.println("收到的数据为：" + text);
+                                    //String text = new String(buffer,0,len);
+                                    Object o_thistimebuffer = Arrays.copyOf(buffer, len);
+                                    byte[] b_thisTime = (byte[]) o_thistimebuffer;
+                                    String s_gbk = new String(b_thisTime,"GBK");
+                                    System.out.println("收到的数据为：" + s_gbk);
+
+                                    //byte[] byteArray = text.getBytes();
+
+                                    for(int i=0; i<len;i++)
+                                    {
+                                        System.out.printf("0x%02X ", buffer[i]);
+                                    }
+                                    System.out.println();
                                     // 在这里群发消息
                                     //sendMsgAll(text);
                                 }

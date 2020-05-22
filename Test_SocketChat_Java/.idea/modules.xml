@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Socket_Chat-Test_SocketChat_Java.iml" filepath="$PROJECT_DIR$/Socket_Chat-Test_SocketChat_Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test_SocketChat_Java.iml" filepath="$PROJECT_DIR$/Test_SocketChat_Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Test_SocketChat_Java-app.iml" filepath="$PROJECT_DIR$/app/Test_SocketChat_Java-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/Test_SocketChat_Java-lib.iml" filepath="$PROJECT_DIR$/lib/Test_SocketChat_Java-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
     </modules>
